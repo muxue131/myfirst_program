@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能日记管理系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1 class="title">
+                <span class="neon">智能日记管理系统</span>
+            </h1>
+            <div class="header-actions">
+                <button id="add-diary-btn" class="btn btn-primary">
+                    <span class="icon">+</span> 写日记
+                </button>
+                <button id="search-date-btn" class="btn btn-secondary">
+                    <span class="icon">🔍</span> 按日期查找
+                </button>
+            </div>
+        </header>
+
+        <!-- 搜索栏 -->
+        <div class="search-section">
+            <div class="date-picker">
+                <input type="date" id="date-input" class="input-field">
+                <button id="search-btn" class="btn btn-accent">搜索</button>
+            </div>
+            <div class="category-filter">
+                <select id="category-select" class="input-field">
+                    <option value="all">所有分类</option>
+                    <!-- 分类选项将通过JS动态添加 -->
+                </select>
+            </div>
+        </div>
+
+        <!-- 日记列表 -->
+        <div class="diary-list" id="diary-list">
+            <!-- 日记卡片将通过JS动态添加 -->
+        </div>
+
+        <!-- 加载动画 -->
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>加载中...</p>
+        </div>
+
+        <!-- 空状态 -->
+        <div class="empty-state" id="empty-state">
+            <div class="empty-icon">📝</div>
+            <h3>还没有日记</h3>
+            <p>点击「写日记」按钮开始记录你的生活</p>
+        </div>
+    </div>
+
+    <!-- 写日记模态框 -->
+    <div class="modal" id="diary-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">写日记</h2>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="diary-form">
+                    <input type="hidden" id="diary-id">
+                    <div class="form-group">
+                        <label for="diary-title">标题</label>
+                        <input type="text" id="diary-title" class="input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="diary-content">内容</label>
+                        <textarea id="diary-content" class="input-field textarea" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="diary-category">分类</label>
+                        <select id="diary-category" class="input-field" required>
+                            <!-- 分类选项将通过JS动态添加 -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-btn">取消</button>
+                <button class="btn btn-primary" id="save-btn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认删除模态框 -->
+    <div class="modal" id="delete-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>确认删除</h2>
+                <button class="close-btn" id="close-delete-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>确定要删除这篇日记吗？此操作不可恢复。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-delete-btn">取消</button>
+                <button class="btn btn-danger" id="confirm-delete-btn">删除</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
